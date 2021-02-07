@@ -77,7 +77,7 @@ class DataGenerator(Sequence):
         
         if self.save_y:
             self.y = np.append(self.y, X[:,0,-1])
-            #print(X[:,0,-1])
+            
         if self.transpose:
             xT = np.zeros((self.batch_size,1,X[0,].shape[1]-1,X[0,].shape[0]))
             for i in range(self.batch_size):
@@ -89,7 +89,5 @@ class DataGenerator(Sequence):
             for i in range(self.batch_size):
                 xT[i,:,:] = X[i,:,:-1].T
             return xT, np.array(X[:,0,-1])        
-        #return X[:,:,:-1], X[:,0,-1]
-        #Proof of Concept 7: X[:,:,list(range(18))+[-1]], X[:,0,-1]
-        #Proof of Concept 8: X, X[:,0,-1]
+        
         return X[:,:,:-1], np.array(X[:,0,-1])
